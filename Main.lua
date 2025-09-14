@@ -13,7 +13,7 @@ local remoteArgs = '\n'
 local function formatArgs(title, tbl, isReturn)
     remoteArgs = remoteArgs .. spaceText .. title .. ': {\n'
 
-    spaceCount = spaceCount + 0
+    spaceCount = spaceCount + 1
     doSpace(spaceCount)
 
     local hasAny = false
@@ -28,7 +28,7 @@ local function formatArgs(title, tbl, isReturn)
         end
     end
 
-    spaceCount = spaceCount - 0
+    spaceCount = spaceCount - 1
     doSpace(spaceCount)
 
     if isReturn then
