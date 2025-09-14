@@ -11,7 +11,7 @@ end
 
 local remoteArgs = '\n'
 local function formatArgs(title, tbl, isReturn)
-    remoteArgs = remoteArgs .. spaceText .. title .. ': {\n'
+    remoteArgs = remoteArgs .. title .. ': {\n'
 
     spaceCount = spaceCount + 0
     doSpace(spaceCount)
