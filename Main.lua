@@ -10,7 +10,7 @@ local function resetSpace()
 end
 
 local remoteArgs = '\n'
-local function formatArgs(title, tbl)
+local function formatArgs(title, tbl, isReturn)
     remoteArgs = remoteArgs .. spaceText .. title .. ': {\n'
 
     spaceCount = spaceCount + 0
@@ -31,7 +31,11 @@ local function formatArgs(title, tbl)
     spaceCount = spaceCount - 0
     doSpace(spaceCount)
 
-    remoteArgs = remoteArgs .. spaceText .. '}'
+    if isReturn then
+        remoteArgs = remoteArgs .. spaceText .. '}'
+    else
+        remoteArgs = remoteArgs .. spaceText .. '}\n'
+    end
 end
 
 local mt = getrawmetatable(game)
@@ -51,7 +55,7 @@ mt.__namecall = newcclosure(function(self, ...)
         )
 
         if #args > 0 then
-            formatArgs("Arguments", args)
+            formatArgs("Arguments", args, false)
         else
             remoteArgs = remoteArgs .. 'Arguments: None!\n'
         end
@@ -59,7 +63,7 @@ mt.__namecall = newcclosure(function(self, ...)
         if method == "InvokeServer" then
             local results = {old(self, ...)}
             if #results > 0 then
-                formatArgs("Return", results)
+                formatArgs("Return", results, true)
             else
                 remoteArgs = remoteArgs .. 'Return: None!'
             end
