@@ -31,7 +31,7 @@ local function formatArgs(title, tbl)
     spaceCount = spaceCount - 0
     doSpace(spaceCount)
 
-    remoteArgs = remoteArgs .. spaceText .. '}\n'
+    remoteArgs = remoteArgs .. spaceText .. '}'
 end
 
 local mt = getrawmetatable(game)
