@@ -45,6 +45,7 @@ setreadonly(mt, false)
 mt.__namecall = newcclosure(function(self, ...)
     local args = {...}
     local method = getnamecallmethod()
+    local results = table.pack(old(self, ...))
 
     if method == 'FireServer' or method == 'InvokeServer' then
         local callerScript = rawget(getfenv(0), 'script')
